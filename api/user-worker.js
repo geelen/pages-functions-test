@@ -5,7 +5,7 @@
  * @returns {Promise<Response>}
  */
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     const { url, method } = request
     const headers = {}
 
@@ -13,10 +13,22 @@ export default {
       headers[k] = v
     }
 
-    const payload = {
+    const input = {
       headers, url, method, body: await request.text()
     }
-    console.log(payload)
+    console.log(input)
+    
+    const res = await (env.ASSETS || env.ASSETS__DO_NOT_USE).fetch(request)
+    const body = await res.text()
+    
+    const payload = {
+      request: input,
+      response: {
+        headers: res.headers,
+        body
+      }
+    }
+    
     return new Response(JSON.stringify(payload), {
       headers: {
         'content-type': 'application/json',
