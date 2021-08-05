@@ -1,9 +1,3 @@
-/**
- * Many more examples available at:
- *   https://developers.cloudflare.com/workers/examples
- * @param {Request} request
- * @returns {Promise<Response>}
- */
 export default {
   async fetch(request, env) {
     const { url, method } = request
