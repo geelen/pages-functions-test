@@ -12,15 +12,21 @@ export default {
     }
     console.log(input)
     
-    const res = await (env.ASSETS || env.ASSETS__DO_NOT_USE).fetch(request)
-    const body = await res.text()
+    const assets = env.ASSETS || env.ASSETS__DO_NOT_USE
+    let response = null
     
-    const payload = {
-      request: input,
-      response: {
+    if (assets) {
+      const res = await ().fetch(request)
+      const body = await res.text()
+      response = {
         headers: res.headers,
         body
       }
+    }
+    
+    const payload = {
+      request: input,
+      response
     }
     
     return new Response(JSON.stringify(payload), {
