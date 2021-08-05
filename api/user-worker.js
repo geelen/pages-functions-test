@@ -20,7 +20,8 @@ export default {
     return new Response(JSON.stringify(payload), {
       headers: {
         'content-type': 'application/json',
-        'x-served-by': 'PAGES FUNCTIONS TESTER WOO'
+        'x-served-by': 'PAGES FUNCTIONS TESTER WOO',
+        'x-this-is': 'some seriously dank hax'
       }
     })
   }
