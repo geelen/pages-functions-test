@@ -19,7 +19,7 @@ export default {
       const res = await ().fetch(request)
       const body = await res.text()
       response = {
-        headers: res.headers,
+        headers: [...res.headers.entries()],
         body
       }
     }
