@@ -11,11 +11,10 @@ export default {
       headers, url, method, body: await request.text()
     }
     
-    const assets = env.ASSETS || env.ASSETS__DO_NOT_USE
     let response = null
     
-    if (assets) {
-      const res = await assets.fetch(request)
+    if (env.ASSETS) {
+      const res = await env.ASSETS.fetch(request)
       const body = await res.text()
 
       const headers = {}
