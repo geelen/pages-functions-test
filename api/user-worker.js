@@ -11,21 +11,12 @@ export default {
       headers, url, method, body: await request.text()
     }
     
-    
+    const res = await env.ASSETS.fetch(request)
+    const body = await res.text()
 
-//       const res = await env.ASSETS.fetch(request)
-//       const body = await res.text()
-
-//       const headers = {}
-
-//       for (const [k,v] of res.headers.entries()) {
-//         headers[k] = v
-//       }
-
-      const response = {
-        headers:  nil,
-        body: nil
-      }
+    const response = {
+      body
+    }
     
     const payload = {
       request: input,
