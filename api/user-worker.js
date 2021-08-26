@@ -1,28 +1,23 @@
-/**
- * Many more examples available at:
- *   https://developers.cloudflare.com/workers/examples
- * @param {Request} request
- * @returns {Promise<Response>}
- */
+const GLOBAL_COUNT = {
+  DEPLOY_ID: 'A'
+}
+
 export default {
-  async fetch(request) {
-    const { url, method } = request
-    const headers = {}
+  async fetch(request, env) {
+    const url = request.url
 
-    for (const [k,v] of request.headers.entries()) {
-      headers[k] = v
+    const colo = request.cf.colo
+    if (!GLOBAL_COUNT[colo]) {
+      GLOBAL_COUNT[colo] = {}
     }
 
-    const payload = {
-      headers, url, method, body: await request.text()
-    }
-    console.log(payload)
-    return new Response(JSON.stringify(payload), {
+    const count = GLOBAL_COUNT[colo][url] || 0
+    GLOBAL_COUNT[colo][url] = count + 1
+
+    return new Response(JSON.stringify(GLOBAL_COUNT) + '\n', {
       headers: {
         'content-type': 'application/json',
-        'x-served-by': 'PAGES FUNCTIONS TESTER WOO',
-        'x-this-is': 'some seriously dank hax'
-      }
+      },
     })
-  }
+  },
 }
