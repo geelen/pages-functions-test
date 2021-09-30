@@ -14,6 +14,7 @@ export default {
     }
 
     const payload = {
+      message: 'HI FROM WORKERS',
       headers, url, method, body: await request.text()
     }
     console.log(payload)
