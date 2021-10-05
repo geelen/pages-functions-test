@@ -14,7 +14,7 @@ export default {
     }
 
     const payload = {
-      message: 'HI FROM WORKERS',
+      message: "I'M ON A BRANCH MF DON'T YOU EVER FORGET",
       headers, url, method, body: await request.text(),
       bindings: Object.keys(env)
     }
