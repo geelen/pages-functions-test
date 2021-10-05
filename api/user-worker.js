@@ -5,7 +5,7 @@
  * @returns {Promise<Response>}
  */
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     const { url, method } = request
     const headers = {}
 
@@ -15,7 +15,8 @@ export default {
 
     const payload = {
       message: 'HI FROM WORKERS',
-      headers, url, method, body: await request.text()
+      headers, url, method, body: await request.text(),
+      bindings: Object.keys(env)
     }
     console.log(payload)
     return new Response(JSON.stringify(payload), {
