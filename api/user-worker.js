@@ -16,7 +16,7 @@ export default {
     const payload = {
       message: 'HI FROM WORKERS',
       headers, url, method, body: await request.text(),
-      bindings: Object.keys(env)
+      bindings: env
     }
     console.log(payload)
     return new Response(JSON.stringify(payload), {
