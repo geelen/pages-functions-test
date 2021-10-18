@@ -13,7 +13,8 @@ export default {
       method,
       body: await request.text(),
       env,
-      ctx
+      ctx,
+      cf: request.cf
     }
     console.log(payload)
     return new Response(JSON.stringify(payload), {
