@@ -1,4 +1,4 @@
 {
-  "entrypoint": "./worker.mjs",
-  "baseURL": "/"
+  "entrypoint": "./functions",
+  "baseURL": "/api"
 }
