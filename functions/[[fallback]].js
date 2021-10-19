@@ -1,3 +1,6 @@
-export const onRequestGet = ({ request }) => {
-  return new Response(`Plinko caught fallback for ${request.url}`)
+export const onRequestGet = async ({ request, next }) => {
+  const assetResponse = await next()
+  assetResponse.headers.set('X-WORKER', 'missed handling in plinko')
+  
+  return assetResponse
 }
