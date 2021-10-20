@@ -1,7 +1,5 @@
 # Pages Functions Test
 
-***Deployed with Pages with Functions***
-
 ## https://pages-functions-test.pages.dev
 
 Uses `plinko` under the hood:
