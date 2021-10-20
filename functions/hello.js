@@ -1,3 +1,12 @@
-export function onRequestGet() {
-  return new Response('Hello, world from Plinko on Pages!!!')
+const hello = async ({ next }) => {
+  const response = await next()
+  response.headers.set('X-Hello', 'Hello from Pages Functions')
+  return response
 }
+
+export const onRequestGet = [
+  hello,
+  () => {
+    return new Response('Hello, world from Plinko on Pages!!!')
+  }
+]
