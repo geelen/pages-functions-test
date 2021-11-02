@@ -1,3 +1,3 @@
 export const onRequestGet = ({ request, env }) => {
-  return new Response(JSON.stringify({env, request}))
+  return new Response(JSON.stringify({request, env}))
 }
