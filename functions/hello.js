@@ -7,6 +7,6 @@ const hello = async ({ next }) => {
 export const onRequestGet = [
   hello,
   () => {
-    return new Response('Hello, world from Plinko on Pages!!!')
+    return new Response('Hello, world from Plinko on Pages!!! Maybe I am super cool?')
   }
 ]
