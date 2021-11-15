@@ -8,7 +8,7 @@ const errorHandler = async ({ next }) => {
 
 const hello = async ({ next }) => {
   const response = await next()
-  response.headers.set('X-Middleware', 'Activated!')
+  response.headers.set('X-Middleware', 'New Pages Type!')
   return response
 }
 
