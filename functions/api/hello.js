@@ -1,6 +1,6 @@
 const hello = async ({ next }) => {
   const response = await next()
-  response.headers.set('X-Hello', 'Hello from Pages Functions')
+  response.headers.set('X-Hello', 'Hello from Pages Functions!')
   return response
 }
 
